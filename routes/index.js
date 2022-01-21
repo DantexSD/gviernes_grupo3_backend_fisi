@@ -23,25 +23,6 @@ router.get("/docentes", async(req,res) => {
     })
 });
 
-// router.get("/docentes", async (req, res) => {
-//     const { id_docente } = req.query;
-//     console.log(id_docente);
-//     if(id_docente != null) {
-//         await db.query('SELECT * FROM CATDFISI.docentes WHERE id_docente = ?', [id_docente], (err, rows, fields) => {
-//             console.log(rows.length)
-//             if(err) {
-//                 res.status(500).send(err)
-//             } else {
-//                 res.status(200).send(rows)
-//             }
-//         })
-//     } else {
-//         res.send(JSON.stringify({ success: false, message: "missing id in query"}))
-//     }
-// });
-
-
-
 router.get("/docentes/:id", async (req, res) => {
     const id_docente = req.params.id;
     console.log(id_docente);
@@ -110,28 +91,28 @@ router.get("/calificaciones/:id", async (req, res) => {
     }
 });
 
-// router.post("/calificaciones/create", async(req, res) => {
-//     const { id_docente, usuario, curso, dificultad, dominio_curso, material_didactico, id_etiqueta, comentario, numero_like, resultado_as } = req.body;
-//     const newData = {
-//         id_docente,
-//         usuario,
-//         curso,
-//         dificultad,
-//         dominio_curso
-//         material_didactico
-//         id_etiqueta
-//         comentario
-//         numero_like
-//         resultado_as
-//     };
-//     await db.query('INSERT INTO CATDFISI.docentes set ?', [newData], (err, data, field) => {
-//         if(err) {
-//             res.status(500).send(err);
-//         } else {
-//             res.status(201).send(data);
-//         }
-//     });
-    
-// })
+router.post("/calificaciones/create", async(req, res) => {
+    const { id_docente, usuario, curso, dificultad, dominio_curso, material_didactico, id_etiqueta, comentario, numero_like, resultado_as } = req.body;
+    const newData = {
+        id_docente,
+        usuario,
+        curso,
+        dificultad,
+        dominio_curso,
+        material_didactico,
+        id_etiqueta,
+        comentario,
+        numero_like,
+        resultado_as
+    };
+    await db.query('INSERT INTO CATDFISI.docentes set ?', [newData], (err, data, field) => {
+        if(err) {
+            res.status(500).send(err);
+        } else {
+            res.status(201).send(data);
+        }
+    });
+
+})
 
 module.exports = router;
