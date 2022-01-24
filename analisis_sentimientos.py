@@ -18,7 +18,7 @@ elif score.get('compound') >= -0.6 and score.get('compound') <= 0.4:
 else:
     calificacion = 1
 
-print(score.get('compound'))
+print(calificacion)
 
 sys.stdout.flush()
 
