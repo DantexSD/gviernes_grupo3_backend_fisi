@@ -335,8 +335,6 @@ class SentimentIntensityAnalyzer:
 
         words_and_emoticons = sentitext.words_and_emoticons
 
-        print(f'sentimientostexto: {words_and_emoticons}')
-
         for item in words_and_emoticons:
             valence = 0
             i = words_and_emoticons.index(item)
@@ -356,15 +354,13 @@ class SentimentIntensityAnalyzer:
 
 
         sentiments = self._but_check(words_and_emoticons, sentiments)
-        print(f'senntimientos = {sentiments}')
+
         return self.score_valence(sentiments, text)
 
     def sentiment_valence(self, valence, sentitext, item, i, sentiments):
         is_cap_diff = sentitext.is_cap_diff
         words_and_emoticons = sentitext.words_and_emoticons
         item_lowercase = item.lower()
-
-        print(f'ItemLowerCase: {item_lowercase}')
 
         if item_lowercase in self.lexicon:
             # get the sentiment valence
